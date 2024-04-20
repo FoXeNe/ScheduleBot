@@ -27,7 +27,7 @@ def letter(message):
     bot.register_next_step_handler(message, back1, class_number)
 
 
-# первый из костылей ввиде клопки 'назад'
+# первый из костылей ввиде кнопки 'назад'
 def back1(message, class_number):
     if message.text == 'назад':
         class_keyboard = types.ReplyKeyboardMarkup(row_width=3, resize_keyboard=True)
@@ -50,7 +50,7 @@ def day(message, class_number):
     bot.send_message(message.chat.id, "Выбери день недели:", reply_markup=day_keyboard)
     bot.register_next_step_handler(message, back2, class_number, class_letter)
 
-# второй из костылей ввиде клопки 'назад'
+# второй из костылей ввиде кнопки 'назад'
 def back2(message, class_number, class_letter):
     if message.text == 'назад':
         class_keyboard = types.ReplyKeyboardMarkup(row_width=3, resize_keyboard=True)
@@ -62,7 +62,7 @@ def back2(message, class_number, class_letter):
     else:
         schedule_res(message, class_number, class_letter)
 
-# победа
+# вывод расписания
 def schedule_res(message, class_number, class_letter):
     day = message.text
     if (class_number in schedule and class_letter in schedule[class_number] and day in
